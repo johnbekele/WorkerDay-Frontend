@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
+import {API_URL} from "../config/config.js";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -9,7 +10,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async (token) => {
       try {
-        const response = await fetch("http://localhost:3000/api/auth/me", {
+        const response = await fetch(`${API_URL}/api/auth/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
@@ -34,7 +35,7 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/login", {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

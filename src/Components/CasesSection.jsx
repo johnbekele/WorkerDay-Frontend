@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import { FaUser, FaFolderOpen, FaPaperPlane, FaEdit ,FaSignOutAlt} from "react-icons/fa";
-
+import {API_URL} from "../config/config.js";
 function CasesSection() {
   const [cases, setCases] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +10,7 @@ function CasesSection() {
   useEffect(() => {
     const fetchCases = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/ticket', {
+        const response = await fetch(`${API_URL}/api/ticket`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

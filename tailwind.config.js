@@ -1,5 +1,7 @@
-// tailwind.config.js (ESM)
+// tailwind.config.js
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
+import colors from "tailwindcss/colors";
+import daisyui from "daisyui";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}"],
@@ -7,13 +9,12 @@ export default {
     extend: {},
   },
   plugins: [
-    require("tailwindcss/colors"), // Import tailwindcss/colors if needed
-    require("daisyui"), // Ensure DaisyUI plugin is included
-    addVariablesForColors, // Your custom plugin
+    colors,
+    daisyui,
+    addVariablesForColors
   ],
 };
 
-// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 function addVariablesForColors({ addBase, theme }) {
   const allColors = flattenColorPalette(theme("colors"));
   const newVars = Object.fromEntries(

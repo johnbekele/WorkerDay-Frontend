@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaSearch, FaFilter, FaSort, FaPlay, FaEye } from 'react-icons/fa';
+import { API_URL } from '../config/config';
 
 const LearningSection = () => {
   // Initialize state with proper default values
@@ -23,7 +24,7 @@ const LearningSection = () => {
   const fetchLearningData = async (nextPageToken = '') => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:3000/api/learning${nextPageToken ? `?pageToken=${nextPageToken}` : ''}`);
+      const response = await axios.get(`${API_URL}/api/learning${nextPageToken ? `?pageToken=${nextPageToken}` : ''}`);
       
       if (nextPageToken) {
         // Append new items to existing data

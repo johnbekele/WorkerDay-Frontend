@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaUsers, FaPlus, FaTrash, FaEdit, FaCheck, FaTimes, FaUser, FaSignOutAlt } from "react-icons/fa";
-
+import {API_URL} from "../config/config.js";
 
 function ProfileModal({ admin, onClose }) {
   return (
@@ -141,7 +141,7 @@ export default function AdminDashboard() {
     const fetchAdminDetails = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:3000/api/auth/me", {
+        const response = await fetch(`${API_URL}/api/auth/me`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -213,7 +213,7 @@ function UsersSection() {
   
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/employees/admin", {
+      const response = await fetch(`${API_URL}/api/employees/admin`, {
         method: "GET",
         headers: { 
           "Content-Type": "application/json", 
@@ -229,7 +229,7 @@ function UsersSection() {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/employees/${id}`, {
+      const response = await fetch(`${API_URL}/api/employees/${id}`, {
         method: "DELETE",
         headers: { 
           "Content-Type": "application/json", 
@@ -247,7 +247,7 @@ function UsersSection() {
 
   const updateUser = async (updatedUser) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/employees/${updatedUser.id}`, {
+      const response = await fetch(`${API_URL}/api/employees/${updatedUser.id}`, {
         method: "PUT",
         headers: { 
           "Content-Type": "application/json", 
@@ -335,7 +335,7 @@ function RequestsSection() {
 
   const fetchRequests = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/requests/admin", {
+      const response = await fetch(`${API_URL}/api/requests/admin`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -359,7 +359,7 @@ function RequestsSection() {
 
   const handleRequestResponse = async (requestId, response) => {
     try {
-      const apiResponse = await fetch(`http://localhost:3000/api/requests/admin/${requestId}`, {
+      const apiResponse = await fetch(`${API_URL}/api/requests/admin/${requestId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

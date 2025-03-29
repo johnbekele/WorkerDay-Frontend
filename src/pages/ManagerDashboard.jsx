@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaUsers, FaEye, FaCheck, FaTimes, FaSignOutAlt, FaEdit, FaUser, FaPlus } from "react-icons/fa";
-
+import {API_URL} from "../config/config.js";
 function ProfileModal({ manager, onClose }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -317,7 +317,7 @@ export default function ManagerDashboard() {
     const fetchManagerDetails = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:3000/api/auth/me", {
+        const response = await fetch(`${API_URL}/api/auth/me`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -416,7 +416,7 @@ function EmployeesSection() {
 
   const fetchManagerDetails = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/me", {
+      const response = await fetch(`${API_URL}/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -430,7 +430,7 @@ function EmployeesSection() {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/employees/manager", {
+      const response = await fetch(`${API_URL}/api/employees/manager`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -462,7 +462,7 @@ function EmployeesSection() {
 
     console.log('Sending data:', formattedData); // For debugging
 
-    const response = await fetch("http://localhost:3000/api/register", {
+    const response = await fetch(`${API_URL}/api/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -722,7 +722,7 @@ function RequestsSection() {
 
   const fetchRequests = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/requests/manager", {
+      const response = await fetch(`${API_URL}/api/requests/manager`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -742,7 +742,7 @@ function RequestsSection() {
   const handleCreateRequest = async (requestData) => {
     try {
       setIsSubmitting(true);
-      const response = await fetch("http://localhost:3000/api/requests/manager", {
+      const response = await fetch("http://52.91.249.230:3000/api/requests/manager", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

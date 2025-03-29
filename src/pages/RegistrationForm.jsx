@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaLock, FaBriefcase } from 'react-icons/fa';
-
+import {API_URL} from '../config/config.js';
 function RegistrationForm() {
   const [formData, setFormData] = useState({
     username: '',
@@ -55,7 +55,7 @@ function RegistrationForm() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/register', {
+      const response = await fetch(`${API_URL}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

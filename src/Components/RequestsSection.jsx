@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaPaperPlane } from "react-icons/fa";
-
+import {API_URL} from "../config/config.js";
 function RequestsSection() {
   const [request, setRequest] = useState("");
   const [requests, setRequests] = useState([]);
@@ -13,7 +13,7 @@ function RequestsSection() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/requests/employee`, {
+        const response = await fetch(`${API_URL}/api/requests/employee`, {
           headers: {
             'Authorization': `Bearer ${token}`, // Add the authentication token
             'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ function RequestsSection() {
     if (!request.trim() || !token) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/requests/employee`, {
+      const response = await fetch(`${API_URL}/api/requests/employee`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`, // Add the authentication token
@@ -66,7 +66,7 @@ function RequestsSection() {
       setRequest("");
 
       // Refresh requests list
-      const updatedResponse = await fetch(`http://localhost:3000/api/requests/employee`, {
+      const updatedResponse = await fetch(`${API_URL}/api/requests/employee`, {
         headers: {
           'Authorization': `Bearer ${token}`, // Add the authentication token
           'Content-Type': 'application/json'

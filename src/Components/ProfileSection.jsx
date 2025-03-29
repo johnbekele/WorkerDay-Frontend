@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import { FaUser, FaFolderOpen, FaPaperPlane, FaEdit ,FaSignOutAlt} from "react-icons/fa";
-
+import {API_URL} from "../config/config.js";
 function ProfileSection() {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ function ProfileSection() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/employees/myprofile', {
+        const response = await fetch(`${API_URL}/api/employees/myprofile`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

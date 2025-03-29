@@ -5,6 +5,7 @@ import {
   IconBrandGithub,
   IconBrandGoogle,
 } from "@tabler/icons-react";
+import {API_URL } from "../config/config.js";
 
 const LoginForm = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const handleSubmit = async (e) => {
   console.log("Submitting login form with data:", loginData);
 
   try {
-    const response = await fetch("http://localhost:3000/api/auth/login", {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
