@@ -35,7 +35,7 @@ const handleSubmit = async (e) => {
     password: formData.password,
   };
 
-  console.log("Submitting login form with data:", loginData);
+  //console.log("Submitting login form with data:", loginData);
 
   try {
     const response = await fetch(`${API_URL}/api/auth/login`, {
@@ -46,7 +46,7 @@ const handleSubmit = async (e) => {
       body: JSON.stringify(loginData),
     });
 
-    console.log("Response received:", response);
+    //console.log("Response received:", response);
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -56,7 +56,7 @@ const handleSubmit = async (e) => {
     }
 
     const data = await response.json();
-    console.log("Login successful:", data);
+    //console.log("Login successful:", data);
 
     if (data.accessToken) {
       localStorage.setItem("token", data.accessToken);
